@@ -1,0 +1,21 @@
+{
+    "name": "fast-streamer",
+    "description": "stream updates to clients using node-fast",
+    "version": "1.0.0",
+    "author": "Joyent (joyent.com)",
+    "private": true,
+    "main": "./lib/index.js",
+    "dependencies": {
+        "assert-plus": "0.1.4",
+        "backoff": "2.3.0",
+        "fast": "git://github.com/andwun/node-fast.git#expose_request_connnections",
+        "node-uuid": "1.2.0",
+        "once": "1.1.1"
+    },
+    "devDependencies": {
+        "bunyan": "0.22.1",
+        "mockery": "1.4.0",
+        "nodeunit": "git://github.com/rgulewich/nodeunit.git#80a3876",
+        "vasync": "1.4.0"
+    }
+}
