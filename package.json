@@ -1,5 +1,5 @@
 {
-    "name": "fast-streamer",
+    "name": "fast-stream",
     "description": "stream updates to clients using node-fast",
     "version": "1.0.0",
     "author": "Joyent (joyent.com)",
