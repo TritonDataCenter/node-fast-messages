@@ -8,7 +8,7 @@
     "dependencies": {
         "assert-plus": "0.1.4",
         "backoff": "2.3.0",
-        "fast": "git://github.com/andwun/node-fast.git#expose_request_connnections",
+        "fast": "git://github.com/rgulewich/node-fast.git#expose_request_connnections",
         "node-uuid": "1.2.0",
         "once": "1.1.1"
     },
