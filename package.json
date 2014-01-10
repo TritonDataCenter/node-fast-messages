@@ -1,7 +1,7 @@
 {
     "name": "fast-stream",
     "description": "stream updates to clients using node-fast",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Joyent (joyent.com)",
     "private": true,
     "main": "./lib/index.js",
