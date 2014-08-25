@@ -17,5 +17,6 @@
         "mockery": "1.4.0",
         "nodeunit": "git://github.com/rgulewich/nodeunit.git#80a3876",
         "vasync": "1.4.0"
-    }
+    },
+    "license": "MPL-2.0"
 }
