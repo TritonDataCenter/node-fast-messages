@@ -8,9 +8,15 @@
     Copyright (c) 2014, Joyent, Inc.
 -->
 
-# fast-stream
+# sdc-fast-stream
 
-Stream event messages via node-fast.
+This repository is part of the Joyent SmartDataCenter project (SDC).  For
+contribution guidelines, issues, and general documentation, visit the main
+[SDC](http://github.com/joyent/sdc) project page.
+
+Stream event messages via node-fast. This is used for communication between
+the SDC [Firewall API](http://github.com/joyent/sdc-fwapi) and
+[firewaller agent](http://github.com/joyent/sdc-firewaller-agent).
 
 # Repository
 
