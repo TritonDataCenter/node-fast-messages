@@ -9,7 +9,7 @@
 #
 
 #
-# fast-stream Makefile
+# fast-messages Makefile
 #
 
 
