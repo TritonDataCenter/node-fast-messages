@@ -5,88 +5,56 @@
 #
 
 #
-# Copyright (c) 2014, Joyent, Inc.
+# Copyright (c) 2019, Joyent, Inc.
 #
 
 #
 # fast-messages Makefile
 #
 
-
 #
 # Tools
 #
-NODEUNIT := node_modules/nodeunit/bin/nodeunit
-NPM := npm
-JS_FILES	:= $(shell find lib test -name '*.js')
-JSL_CONF_NODE	 = tools/jsl.node.conf
-JSL_FILES_NODE   = $(JS_FILES)
-JSL_FLAGS  	?= --nologo --nosummary
-JSL_FLAGS_NODE 	 = --conf=$(JSL_CONF_NODE)
-JSSTYLE_FILES	 = $(JS_FILES)
-JSSTYLE_FLAGS    = -o indent=4,strict-indent=1,doxygen,unparenthesized-return=0,continuation-at-front=1,leading-right-paren-ok=1
 
+ISTANBUL	:= node_modules/.bin/istanbul
+FAUCET		:= node_modules/.bin/faucet
+NODE		:= node
+NPM		:= npm
+
+#
+# Files
+#
+
+JS_FILES	:= $(shell find lib test -name '*.js')
+JSSTYLE_FILES	= $(JS_FILES)
+JSSTYLE_FLAGS	= -f tools/jsstyle.conf
+ESLINT_FILES	= $(JS_FILES)
+
+include ./tools/mk/Makefile.defs
 
 #
 # Repo-specific targets
 #
 
-$(NODEUNIT):
+.PHONY: all
+all:
 	$(NPM) install
 
+$(ISTANBUL):
+	$(NPM) install
+
+$(FAUCET):
+	$(NPM) install
+
+CLEAN_FILES += ./node_modules/
 
 #
 # test / check targets
 #
 
 .PHONY: test
-test: $(NODEUNIT)
-	@$(NODEUNIT) --reporter tap test/*.js
+test: $(ISTANBUL) $(FAUCET)
+	@$(NODE) $(ISTANBUL) cover --print none test/run.js | $(FAUCET)
 
-.PHONY: check
-check: check-jsl check-jsstyle
-	@echo check ok
-
-.PHONY: prepush
-prepush: check test
-
-#
-# This rule enables other rules that use files from a git submodule to have
-# those files depend on deps/module/.git and have "make" automatically check
-# out the submodule as needed.
-#
-deps/%/.git:
-	git submodule update --init deps/$*
-
-#
-# javascriptlint
-#
-
-JSL_EXEC	?= deps/javascriptlint/build/install/jsl
-JSL		?= $(JSL_EXEC)
-
-$(JSL_EXEC): | deps/javascriptlint/.git
-	cd deps/javascriptlint && make install
-
-distclean::
-	if [[ -f deps/javascriptlint/Makefile ]]; then \
-		cd deps/javascriptlint && make clean; \
-	fi
-
-
-#
-# jsstyle
-#
-
-JSSTYLE_EXEC	?= deps/jsstyle/jsstyle
-JSSTYLE		?= $(JSSTYLE_EXEC)
-
-$(JSSTYLE_EXEC): | deps/jsstyle/.git
-
-.PHONY: check-jsl
-check-jsl: $(JSL_EXEC)
-	@$(JSL) $(JSL_FLAGS) $(JSL_FLAGS_NODE) $(JSL_FILES_NODE)
-
-.PHONY: check-jsstyle
-check-jsstyle:  $(JSSTYLE_EXEC)
-	@$(JSSTYLE) $(JSSTYLE_FLAGS) $(JSSTYLE_FILES)
+include ./tools/mk/Makefile.deps
+include ./tools/mk/Makefile.targ

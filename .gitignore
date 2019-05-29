@@ -1,1 +1,5 @@
+*.log
+*.tgz
+/build
+/coverage
 node_modules

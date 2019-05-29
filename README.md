@@ -5,17 +5,18 @@
 -->
 
 <!--
-    Copyright (c) 2014, Joyent, Inc.
+    Copyright (c) 2019, Joyent, Inc.
 -->
 
 # node-fast-messages
 
-This repository is part of the Joyent SmartDataCenter project (SDC).  For
-contribution guidelines, issues, and general documentation, visit the main
-[SDC](http://github.com/joyent/sdc) project page.
+This repository is part of the Joyent Triton project. See the [contribution
+guidelines](https://github.com/joyent/triton/blob/master/CONTRIBUTING.md) --
+*Triton does not use GitHub PRs* -- and general documentation at the main
+[Triton project](https://github.com/joyent/triton) page.
 
 Stream event messages via node-fast. This is used for communication between
-the SDC [Firewall API](http://github.com/joyent/sdc-fwapi) and
+the Triton [Firewall API](http://github.com/joyent/sdc-fwapi) and
 [firewaller agent](http://github.com/joyent/sdc-firewaller-agent).
 
 # Repository
@@ -42,4 +43,4 @@ error, so you may need to run this multiple times while fixing.
 
 To run an individual test:
 
-    ./node_modules/.bin/nodeunit <path to test file>
+    node test/<test>.test.js
