@@ -1,7 +1,7 @@
 {
     "name": "fast-messages",
     "description": "stream updates to clients using node-fast",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "author": "Joyent (joyent.com)",
     "main": "./lib/index.js",
     "repository": {
