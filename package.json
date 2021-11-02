@@ -20,7 +20,7 @@
         "istanbul": "^0.4.0",
         "tape": "^4.2.2",
         "vasync": "1.4.0",
-        "eslint": "4.13.1",
+        "eslint": "6.5.1",
         "eslint-plugin-joyent": "~2.1.0"
     },
     "license": "MPL-2.0"
